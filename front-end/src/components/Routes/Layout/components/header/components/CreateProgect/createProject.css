@@ -1,0 +1,35 @@
+.createProject{
+  color: #FFFFFF;
+  font-size: 20px;
+  background-color: #04c6d2;
+  width: 222px;
+  height: 63px;
+  border-radius: 20px;
+  border: #04c6d2;
+}
+
+.buttonCreateComponent{
+  margin-top: 10px;
+  margin-left: 22%;
+  background-color: #04c6d2;
+  padding: 0px;
+  width: 222px;
+  height: 63px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px #00000049;
+}
+
+.inputNameProject-hidden{
+  height: 0;
+  width: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.inputNameProject-visible{
+  margin-top: 15px;
+  margin-left: 27px;
+  height: 30px;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
