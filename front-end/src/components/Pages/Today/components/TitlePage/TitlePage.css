@@ -1,0 +1,43 @@
+.TitlePage{
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid 2px black;
+}
+
+.TitleName{
+    margin-left: 25px;
+    margin-top: 19px;
+    margin-bottom: 9px;
+}
+
+.SearchComponent{
+    display: flex;
+    flex-direction: row;
+    height: 26px;
+    margin-left: 400px;
+    margin-top: 19px;
+    margin-bottom: 9px;
+}
+
+.InputSearch{
+    height: 25px;
+}
+
+.ButtonSearch{
+    padding: 0px;
+    width: 30px;
+    height: 30px;
+}
+
+.imgSearch{
+    margin: 0px;
+    width: 27px;
+    height: 27px;
+}
+
+.Selector{
+    margin-left: 60px;
+    margin-top: 19px;
+    margin-bottom: 9px;
+    height: 30px;
+}

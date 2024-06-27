@@ -1,0 +1,109 @@
+.ComponentTask{
+    border-radius: 25px;
+    width: 958px;
+    background-color: #ffccfd;
+}
+
+.SubtaskLisk{
+    margin: 10px;
+    padding: 10px;
+}
+
+.TitleTask{
+    display: flex;
+    flex-direction: row;
+    width: 958px;
+    height: 52px;
+    border-radius: 25px;
+    background-color: #FEF6FF;
+    margin-top: 7px;
+}
+
+.ButtonFold{
+    margin-top: 15px;
+    margin-left: 10px;
+    padding: 0px;
+    width: 30px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.ImageFold{
+    margin: 0px ;
+    width: 27px;
+    height: 20px;
+}
+
+.NameTaskdiv{
+    margin-top: 15px;
+    margin-left: 10px;
+    width: 370px;
+    height: 52px;
+}
+
+.NameTask{
+    text-align: left;
+    margin: 0px;
+}
+
+.DayCreateTaskdiv{
+    margin-top: 15px;
+    width: 125px;
+    height: 52px;
+}
+
+.DayCreateTask{
+    margin: 0px;
+}
+
+.Projectdiv{
+    margin-top: 15px;
+    width: 175px;
+    height: 52px;
+}
+
+.Project{
+    margin: 0px;
+}
+
+.Deadlinediv{
+    margin-top: 15px;
+    width: 151px;
+    height: 52px;
+}
+
+.Deadline{
+    margin: 0px;
+}
+
+.yellowStatusTask{
+    margin-top: 15px;
+    margin-left: 20px;
+    width: 19px;
+    height: 19px;
+    background-color: yellow;
+    border-radius: 25px;
+    border: solid 2px gray;
+    
+}
+
+.greenStatusTask{
+    margin-top: 15px;
+    margin-left: 20px;
+    width: 19px;
+    height: 19px;
+    background-color: green;
+    border-radius: 25px;
+    border: solid 2px gray;
+}
+
+.redStatusTask{
+    margin-top: 15px;
+    margin-left: 20px;
+    width: 19px;
+    height: 19px;
+    background-color: red;
+    border-radius: 25px;
+    border: solid 2px gray;
+}
