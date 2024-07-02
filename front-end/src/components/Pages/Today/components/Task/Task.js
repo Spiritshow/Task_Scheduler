@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import Subtask from "../Subtask/SubTask";
 import "./Task.css"
 import imgFold from "../img/Fold (1).png"
+import { useData } from "../../../../store/store";
 
 const Task = ({prop}) => {
 
+    const project = useData((state) => state.data)
     const [status, setStatus] = useState("yellowStatusTask");
     const [targ, setTarg] = useState(false);
 
@@ -13,16 +15,15 @@ const Task = ({prop}) => {
             setTarg(false);
         else 
             setTarg(true);
-
-        prop.status = DefinitionStatus(prop.subtasks);
-        editStatusTask(prop.status);
+        prop.statusTask = DefinitionStatus(prop.Subtasks);
+        editStatusTask(prop.statusTask);
     }
     
-    let sb = prop.subtasks[0];
+    let sb = prop.Subtasks[0];
 
     useEffect(() => {
-        prop.status = DefinitionStatus(prop.subtasks);
-        editStatusTask(prop.status);
+        prop.statusTask = DefinitionStatus(prop.Subtasks);
+        editStatusTask(prop.statusTask);
     }, [prop, sb])
 
     const editStatusTask = (status) => {
@@ -40,13 +41,12 @@ const Task = ({prop}) => {
     }
 
     const DefinitionStatus = (subtasks) => {
-        const allTrue = subtasks.every(subtask => subtask.status === true);
-        console.log(subtasks);
-        console.log(allTrue);
+        const allTrue = subtasks.every(subtask => subtask.statusSubtask === true);
         return allTrue ? "green" : "yellow";
     }
 
     const listSubtask = (subtasks) => {
+
         if(!!subtasks)
         return(subtasks.map(subtask =>(
             <Subtask prop={subtask}/>)))
@@ -54,26 +54,30 @@ const Task = ({prop}) => {
         return(<h4>Загрузка...</h4>)
     }
 
+    const ShowData = (data) => {
+        return(data.getDate() + "." + data.getMonth() + "." + data.getFullYear())
+    }
+
     return(
         <div className="ComponentTask">
             <div className="TitleTask">
                 <button className="ButtonFold" onClick={handleFold}><img src={imgFold} className="ImageFold"/></button>
                 <div className="NameTaskdiv">
-                    <h4 className="NameTask">{prop.name}</h4>
+                    <h4 className="NameTask">{prop.nameTask}</h4>
                 </div>
                 <div className="DayCreateTaskdiv">
-                    <h4 className="DayCreateTask">{prop.dayCreate}</h4>
+                    <h4 className="DayCreateTask">{ShowData(prop.dayCreateTask)}</h4> {/**/} 
                 </div>
                 <div className="Projectdiv">
-                    <h4 className="Project">{prop.project}</h4>
+                    <h4 className="Project">{project[0].nameProject}</h4>
                 </div>
                 <div className="Deadlinediv">
-                    <h4 className="Deadline">{prop.deadline}</h4>
+                    <h4 className="Deadline">{ShowData(prop.deadlineTask)}</h4> {/*{prop.deadlineTask}*/} 
                 </div>
                 <div className={status}></div>
             </div>
             {targ && <div className="SubtaskLisk">
-                {listSubtask(prop.subtasks)}
+                {listSubtask(prop.Subtasks)}
             </div>}
         </div>
     )

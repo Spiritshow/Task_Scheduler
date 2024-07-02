@@ -9,8 +9,7 @@ const Subtask = ({prop}) => {
 
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked);
-        prop.status = event.target.checked;
-        console.log(prop.status);
+        prop.statusSubtask = event.target.checked;
         //смена статуса подзадачи на сервере
         //проверка если все зд выполнены то смена статуса задачи
     };
@@ -22,9 +21,9 @@ const Subtask = ({prop}) => {
     useEffect(() =>{
         //прописать приём данных {название подзадачи},{статус подзачи}
         //setNameSubtask({название подзадачи});
-        setNameSubtask(prop.name);
+        setNameSubtask(prop.nameSubtask);
         //setIsChecked({статус подзадачи});
-        setIsChecked(prop.status);
+        setIsChecked(prop.statusSubtask);
         //getStatus({статус подзадачи});
 
     },[])

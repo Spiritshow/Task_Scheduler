@@ -12,21 +12,21 @@ const MovePlace = () => {
     const nameUser = window.location.pathname.split("/")[1];
 
     const LinkToday = () => {
-        navigate(`/${nameUser}/Today`);
+        navigate(`/`);
         setClassToday("buttonTodayClick");
         setClassProject("buttonProject");
         setClassCalendar("buttonCalendar");
     };
 
     const LinkProject = () => {
-        navigate(`/${nameUser}/Project`);
+        navigate(`/Project`);
         setClassToday("buttonToday");
         setClassProject("buttonProjectClick");
         setClassCalendar("buttonCalendar");
     };
 
     const LincCalendar = () => {
-        navigate(`/${nameUser}/Calendar`);
+        navigate(`/Calendar`);
         setClassToday("buttonToday");
         setClassProject("buttonProject");
         setClassCalendar("buttonCalendarClick");

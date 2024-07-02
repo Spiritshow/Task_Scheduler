@@ -3,6 +3,7 @@ import "./Today.css";
 import TitlePage from "./components/TitlePage/TitlePage";
 import TitleTable from "./components/TitleTable/TitleTable";
 import Task from "./components/Task/Task";
+import { useData } from "../../store/store";
 
 const Today = () => {
 
@@ -52,14 +53,41 @@ const Today = () => {
       
     const props = [prop, _prop];
 
+    const projects = useData((state) => state.data)
+
+    const now = new Date();
+
+    const listTaskToday = (projects) => {
+        // projects.map(project => {
+        //     project.Tasks.map(task => {
+        //         if(task.dayTargetTask.getFullYear() <= now.getFullYear() && task.dayTargetTask.getMonth() <= now.getMonth() && task.dayTargetTask.getDate() >= now.getDate())
+        //         {
+        //             console.log(task)
+        //             return(<Task prop={task}/>)
+        //         }
+        //     })
+        // })
+
+        const tasksToday = projects.flatMap(project =>
+            project.Tasks.filter(task =>
+                task.dayTargetTask.getFullYear() <= now.getFullYear() ||
+                task.dayTargetTask.getMonth() <= now.getMonth() ||
+                task.dayTargetTask.getDate() <= now.getDate()
+            )
+        );
+        {console.log(tasksToday)}
+        return tasksToday.map(task => (
+            <Task prop={task} />
+        ));
+    }
+
     return(
         <div className="Todaydiv">
             <div className="Today">
             <TitlePage/>
             <TitleTable/>
-            {props.map(prop => (
-                <Task prop={prop}/>
-            ))}
+            {listTaskToday(projects)}
+            {/* <Task prop={prop}/> */}
             </div>
         </div>
     )

@@ -1,0 +1,41 @@
+.componentTitleTable{
+    display: flex;
+    flex-direction: row;
+    width: 958px;
+    border-bottom: solid 1px black;
+}
+
+.NameTable{
+    height: 24.8px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+}
+
+.DayCreateTable{
+    margin-left: 290px;
+    height: 24.8px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
+
+.ProjectTable{
+    margin-left: 45px;
+    height: 24.8px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
+
+.DeadlineTable{
+    margin-left: 80px;
+    height: 24.8px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
+
+.StatusTable{
+    margin-left: 25px;
+    height: 24.8px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+}

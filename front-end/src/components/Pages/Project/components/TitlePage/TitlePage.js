@@ -2,7 +2,7 @@ import React from "react";
 import imgsearch from "../img/Search.png"
 import "./TitlePage.css"
 
-const TitlePage = () => {
+const TitlePageProject = () => {
 
     const handleChange = () => {
 
@@ -18,7 +18,7 @@ const TitlePage = () => {
 
     return(
         <div className="TitlePage">
-            <h2 className="TitleName">Задачи</h2>
+            <h2 className="TitleName">Проекты</h2>
             <div className="SearchComponent">
                 <input className="InputSearch" onChange={handleChange} placeholder="Поиск..."></input>
                 <button className="ButtonSearch" onClick={handleSearch}><img className="imgSearch" src={imgsearch} alt=""/></button>
@@ -35,4 +35,4 @@ const TitlePage = () => {
     )
 }
 
-export default TitlePage;
+export default TitlePageProject;

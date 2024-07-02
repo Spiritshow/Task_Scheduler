@@ -1,8 +1,10 @@
 .header{
+    
     margin: 0px;
     padding: 0px;
     display: flex;
     flex-direction: row;
+    background-color: aliceblue;
     border-bottom:solid #b7b7b7; 
     border-width: 1px; 
   }
