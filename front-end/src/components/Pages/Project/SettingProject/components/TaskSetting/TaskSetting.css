@@ -1,0 +1,14 @@
+.TaskSettingdiv{
+    border-radius: 25px;
+    width: 958px;
+    background-color: #ffccfd;
+}
+
+.TaskSetting{
+    margin-left: 0px;
+}
+
+.Listdiv{
+    margin: 7px;
+    padding: 7px;
+}

@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
-import "./TitleProject.css";
+import "./TitleTask.css";
 import imgSettings from "../../../img/Settings.png";
 import imgDelete from "../../../img/Delete.png";
-import { useNavigate } from "react-router-dom";
 
-const TitleProject = ({prop}) => {
+const TitleTask = ({prop}) => {
     const [status, setStatus] = useState("yellowStatusTask");
-    const navigate = useNavigate();
+
     useEffect(() => {
-        editStatusTask(prop.statusProject);
+        editStatusTask(prop.statusTask);
     })
 
     const handleSettings = () => {
         
-        navigate(`/Settings/${prop.nameProject}`,{state: prop});
     }
 
     const handleDelete = () => {
@@ -23,13 +21,13 @@ const TitleProject = ({prop}) => {
     const editStatusTask = (status) => {
         switch (status) {
             case "green":
-                setStatus("greenStatusProject");
+                setStatus("greenStatusTask");
                 break;
             case "red":
-                setStatus("redStatusProject");
+                setStatus("redStatusTask");
                 break;
             default:
-                setStatus("yellowStatusProject");
+                setStatus("yellowStatusTask");
                 break;
         }
     }
@@ -39,21 +37,21 @@ const TitleProject = ({prop}) => {
     }
 
     return(
-        <div className="ComponentProject">
-            <div className="TitleProject">
-                <div className="NameProjectdiv">
-                    <h4 className="NameProject">{prop.nameProject}</h4>
+        <div className="ComponentTask">
+            <div className="TitleTask">
+                <div className="NameTaskdiv">
+                    <h4 className="NameTask">{prop.nameTask}</h4>
                 </div>
-                <div className="DayCreateProjectdiv">
-                    <h4 className="DayCreateProject">{ShowData(prop.dayCreateProject)}</h4> {/**/} 
+                <div className="DayCreateTaskdiv">
+                    <h4 className="DayCreateTask">{ShowData(prop.dayCreateTask)}</h4> 
                 </div>
-                <div className="CountTaskdiv">
-                    <h4 className="CountTask">{prop.CountTask}</h4>
-                </div>
-                <div className="DeadlineProjectdiv">
-                    <h4 className="DeadlineProject">{ShowData(prop.deadlineProject)}</h4> {/*{prop.deadlineTask}*/} 
+                <div className="DeadlineTaskdiv">
+                    <h4 className="DeadlineTask">{ShowData(prop.deadlineTask)}</h4> 
                 </div>
                 <div className={status}></div>
+                <div className="DayTargetTaskdiv">
+                    <h4 className="DayTargetTask">{ShowData(prop.dayTargetTask)}</h4>
+                </div>
                 <button className="ButtonSetting" onClick={handleSettings}><img src={imgSettings} className="ImageSetting"/></button>
                 <button className="ButtonDelete" onClick={handleDelete}><img src={imgDelete} className="ImageDelete"/></button>
             </div>
@@ -61,4 +59,4 @@ const TitleProject = ({prop}) => {
     )
 }
 
-export default TitleProject;
+export default TitleTask;

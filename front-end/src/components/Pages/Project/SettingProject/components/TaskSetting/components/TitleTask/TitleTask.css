@@ -1,10 +1,10 @@
-.ComponentProject{
+.ComponentTask{
     border-radius: 25px;
     width: 958px;
     background-color: #ffccfd;
 }
 
-.TitleProject{
+.TitleTask{
     display: flex;
     flex-direction: row;
     width: 958px;
@@ -46,42 +46,42 @@
     height: 20px;
 }
 
-.NameProjectdiv{
+.NameTaskdiv{
     margin-top: 15px;
     margin-left: 20px;
     width: 335px;
     height: 52px;
 }
 
-.NameProject{
+.NameTask{
     text-align: left;
     margin: 0px;
 }
 
-.DayCreateProjectdiv{
+.DayCreateTaskdiv{
     text-align: center;
     margin-top: 15px;
     width: 125px;
     height: 52px;
 }
 
-.DayCreateProject{
+.DayCreateTask{
     margin: 0px;
 }
 
-.CountTaskdiv{
+.DayTargetTaskdiv{
     text-align: center;
-    margin-left: 30px;
+    margin-left: 10px;
     margin-top: 15px;
-    width: 150px;
+    width: 125px;
     height: 52px;
 }
 
-.CountTask{
+.DayTargetTask{
     margin: 0px;
 }
 
-.DeadlineProjectdiv{
+.DeadlineTaskdiv{
     text-align: center;
     margin-left: 5px;
     margin-top: 15px;
@@ -89,11 +89,11 @@
     height: 52px;
 }
 
-.DeadlineProject{
+.DeadlineTask{
     margin: 0px;
 }
 
-.yellowStatusProject{
+.yellowStatusTask{
     margin-top: 15px;
     margin-left: 17px;
     width: 19px;
@@ -104,7 +104,7 @@
     
 }
 
-.greenStatusProject{
+.greenStatusTask{
     margin-top: 15px;
     margin-left: 17px;
     width: 19px;
@@ -114,7 +114,7 @@
     border: solid 2px gray;
 }
 
-.redStatusProject{
+.redStatusTask{
     margin-top: 15px;
     margin-left: 20px;
     width: 19px;
