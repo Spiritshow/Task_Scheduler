@@ -39,8 +39,39 @@ router.route("/api/project")
     })
 
 router.route("/api/task")
+    //search id_project
     .get((req,res) => {
-        
+        userControllers.showTask(req,res);
+    })
+
+    .post((req,res) => {
+        userControllers.insertTask(req,res);
+    })
+
+    .put((req,res) => {
+        userControllers.updateTask(req,res);
+    })
+
+    .delete((req, res) => {
+        userControllers.deleteTask(req,res);
+    })
+
+router.route("/api/subtask")
+    //search id_task
+    .get((req,res) => {
+        userControllers.showSubtask(req,res);
+    })
+
+    .post((req,res) => {
+        userControllers.insertSubtask(req,res);
+    })
+
+    .put((req,res) => {
+        userControllers.updateSubtask(req,res);
+    })
+
+    .delete((req,res) => {
+        userControllers.deleteSubtask(req,res);
     })
 
 module.exports = router;

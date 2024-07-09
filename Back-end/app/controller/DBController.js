@@ -70,5 +70,40 @@ exports.deleteProject = function (tableP,tableE,idproject) {
         const result = {idproject: queryP[0], enbly: queryE[0]};
         return result;
     })
+}
 
+exports.getTask = function (table, id_project) {
+    return knex.select('*')
+            .from(table)
+            .where({'id_project': id_project});
+}
+
+exports.postTask = function (table, data) {
+    return knex(table).insert(data).returning('id').then(id => {
+        return id[0];
+    })
+}
+
+exports.putTask = function (table,id,data) {
+    return knex(table)
+        .where({'id': id})
+        .update(data);
+}
+
+exports.deleteTask = function (table,id) {
+    return knex(table)
+        .where({'id': id})
+        .delete();
+}
+
+exports.getSubtask = function (table, id_task) {
+    return knex.select('*')
+            .from(table)
+            .where({'id_task': id_task});
+}
+
+exports.deleteSubtask = function (table,id) {
+    return knex(table)
+        .where({'id': id})
+        .delete();
 }

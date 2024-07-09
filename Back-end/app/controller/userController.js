@@ -55,3 +55,59 @@ exports.deleteProject = (req,res) => {
         res.status(200);
     })
 }
+
+exports.showTask = (req,res) => {
+    const id_project = req.query.search;
+    DBController.getTask('task',id_project).then(rows => {
+        res.status(200).send(rows);
+    })
+}
+
+exports.insertTask = (req,res) => {
+    const body = req.body;
+    DBController.postTask('task',{name: body.name, daytarget: body.daytarget, deadline: body.deadline, id_project: body.id_project }).then(rows => {
+        res.status(201).send(rows);
+    })
+}
+
+exports.updateTask = (req,res) => {
+    const body = req.body;
+    DBController.putTask('task',body.id,{name: body.name, daycreate: body.daycreate , daytarget: body.daytarget, deadline: body.deadline, state: body.state, id_project: body.id_project}).then(result => {
+        res.status(201).send(`${result}`);
+    })
+}
+
+exports.deleteTask = (req,res) => {
+    const body = req.body;
+    DBController.deleteTask('task',body.id).then(result => {
+        res.status(200).send(`${result}`);
+    })
+}
+
+exports.showSubtask = (req,res) => {
+    const id_task = req.query.search;
+    DBController.getSubtask('subtask',id_task).then(rows => {
+        res.status(200).send(rows);
+    })
+}
+
+exports.insertSubtask = (req,res) => {
+    const body = req.body;
+    DBController.postTask('subtask',{name: body.name, id_task: body.id_task}).then(result => {
+        res.status(201).send(result);
+    })
+}
+
+exports.updateSubtask = (req,res) => {
+    const body = req.body;
+    DBController.putTask('subtask', body.id, {name: body.name, state: body.state, id_task: body.id_task}).then(result => {
+        res.status(200).send(`${result}`);
+    })
+}
+
+exports.deleteSubtask = (req,res) => {
+    const body = req.body;
+    DBController.deleteSubtask('subtask',body.id).then(result => {
+        res.status(200).send(`${result}`);
+    })
+}
