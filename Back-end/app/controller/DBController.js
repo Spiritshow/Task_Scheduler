@@ -1,0 +1,74 @@
+const pg = require('pg');
+const {dbConfig, knexDBConfig} = require('../config/index');
+const knex = require('knex')(knexDBConfig);
+const client = new pg.Client(dbConfig);
+
+client.connect(err => {
+    if (err) throw err;
+});
+
+exports.queryDatabase = function(query) {
+    return client.query(query).then(result => {
+        console.log(result.rows);
+        console.log(`Rows: ${result.rowCount}`);
+        return result.rows;
+    })
+    .catch(err => {
+        console.log(err);
+        throw err;
+    });
+}
+
+exports.getUsers = function() {
+    return knex.select({
+        id_user: 'id',
+        username: 'username',
+        img: 'img'
+    })
+    .from('users');
+}
+exports.insertUserKnex = function (table, data) {
+    return knex(table).insert(data).returning('id').then(id =>{
+        return id[0];
+    })
+};
+
+exports.getTaskAtProject = function (idUser) {
+    return knex.select('task.id', 'task.name', 'task.daycreate', 'task.daytarget', 'task.deadline', 'task.state')
+    .from('task')
+    .join('project', 'task.id_project', '=', 'project.id')
+    .join('eligibility', 'project.id', '=', 'eligibility.idproject')
+    .where({'eligibility.iduser': idUser});
+}
+
+exports.getProject = function (idUser) {
+    return knex.select('project.id','project.name','project.daycreate','project.deadline','project.state')
+    .from('project')
+    .join('eligibility', 'project.id', '=', 'eligibility.idproject')
+    .where({'eligibility.iduser': idUser})
+}
+
+exports.insertProjectAndEligibility = function (tableP,tableE, dataP, dataE) {
+    return knex.transaction(async trx =>{
+        const queryP = await trx(tableP).insert(dataP).returning('id');
+        const queryE = await trx(tableE).insert({...dataE, idproject: queryP[0].id}).returning('id');
+        const result = {idproject: queryP[0], enbly: queryE[0]};
+        return result;
+    })
+}
+
+exports.putProject = function (table,id,name, daycreate, deadline, state) {
+    return knex(table)
+        .where("id","=", id)
+        .update({id,name,daycreate,deadline,state});
+}
+
+exports.deleteProject = function (tableP,tableE,idproject) {
+    knex.transaction(async trx => {
+        const queryE = await trx(tableE).where({'idproject': idproject}).delete().returning('id');
+        const queryP = await trx(tableP).where({'id': idproject}).delete();
+        const result = {idproject: queryP[0], enbly: queryE[0]};
+        return result;
+    })
+
+}
