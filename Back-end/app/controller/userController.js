@@ -1,4 +1,5 @@
 const knex = require('knex');
+const bcrypt = require('bcrypt');
 
 const DBController = require('./DBController');
 const { escape } = require('mysql');
@@ -9,7 +10,9 @@ exports.showUsers = (req,res) => {
 
 exports.createUser = function createUser(req,res) {
     const body = req.body;
-    DBController.insertUserKnex('users',{id: body.id, username: body.username, img: body.img}).then(result => {
+    const salt = bcrypt.genSaltSync();
+    const hash = bcrypt.hashSync(body.password,salt);
+    DBController.insertUserKnex('users', 'authentication',{username: body.username, img: body.img},{login: body.login, password: hash}).then(result => {
         res.send(result);
     })
 }
@@ -51,7 +54,7 @@ exports.updateProject = (req,res) => {
 
 exports.deleteProject = (req,res) => {
     const body = req.body;
-    DBController.deleteProject('project','eligibility',body.id).then(() =>{
+    DBController.deleteProject(body.id).then(() =>{
         res.status(200);
     })
 }
@@ -109,5 +112,20 @@ exports.deleteSubtask = (req,res) => {
     const body = req.body;
     DBController.deleteSubtask('subtask',body.id).then(result => {
         res.status(200).send(`${result}`);
+    })
+}
+
+exports.showAuthentication = (req,res) => {
+    const body = req.body;
+    DBController.getAuthentication('authentication',body.login).then(result => {
+        if (result[0]) {
+            if (bcrypt.compareSync(body.password, result[0].password)) {
+                res.status(200).send(result);   
+            }else {
+                res.status(401).send();
+            }    
+        }else { 
+            res.status(404).send();
+        }
     })
 }

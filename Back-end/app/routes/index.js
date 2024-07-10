@@ -10,9 +10,7 @@ router.route("/api/user")
     })
 
     .post((req,res) => {
-        console.log(req.body);
         userControllers.createUser(req,res);
-
     })
 //search iduser
 router.route("/api/taskAtProject")
@@ -72,6 +70,11 @@ router.route("/api/subtask")
 
     .delete((req,res) => {
         userControllers.deleteSubtask(req,res);
+    })
+
+router.route("/api/authentication")
+    .post((req,res) => {
+        userControllers.showAuthentication(req,res);
     })
 
 module.exports = router;
