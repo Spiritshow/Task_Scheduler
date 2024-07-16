@@ -9,11 +9,11 @@
     height: 24.8px;
     margin-top: 18px;
     margin-bottom: 10px;
-    margin-left: 40px;
+    margin-left: 20px;
 }
 
 .DayCreateTable{
-    margin-left: 220px;
+    margin-left: 240px;
     height: 24.8px;
     width: 140px;
     margin-top: 18px;
@@ -23,12 +23,13 @@
 .ProjectTable{
     margin-left: 35px;
     height: 24.8px;
-    margin-top: 18px;
+    width: 130px;
+    margin-top: 0px;
     margin-bottom: 10px;
 }
 
 .DeadlineTable{
-    margin-left: 40px;
+    margin-left: 20px;
     height: 24.8px;
     margin-top: 18px;
     margin-bottom: 10px;

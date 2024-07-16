@@ -1,5 +1,6 @@
 .header{
-    
+    width:1540px;
+    position:fixed;
     margin: 0px;
     padding: 0px;
     display: flex;

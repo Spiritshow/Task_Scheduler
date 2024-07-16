@@ -1,17 +1,29 @@
 import React, { useEffect, useState } from "react";
 import "./SubTask.css"
+import axios from "axios";
+import { useCrutch } from "../../../../store/store";
 
 const Subtask = ({prop}) => {
     
     const [nameSubtask, setNameSubtask] = useState();
     const [isChecked, setIsChecked] = useState();
     const [statusSubtask,setStatusSubtask] = useState("Не выполнено");
+    const togleCrutch = useCrutch(state => state.togleCrutch);
+
+    const updateSubtask = async (state) => {
+        try 
+        {
+            const response = await axios.put(`http://localhost:3001/api/subtask`,{id: prop.id, name: prop.name,state: state, id_task: prop.id_task});
+        }catch(error) {
+                console.error('Ошибка получения данных:', error);
+        }
+    }
 
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked);
-        prop.statusSubtask = event.target.checked;
-        //смена статуса подзадачи на сервере
-        //проверка если все зд выполнены то смена статуса задачи
+        prop.state = event.target.checked;
+        updateSubtask(event.target.checked);
+        togleCrutch();
     };
 
     const getStatus = (status) => {
@@ -21,9 +33,9 @@ const Subtask = ({prop}) => {
     useEffect(() =>{
         //прописать приём данных {название подзадачи},{статус подзачи}
         //setNameSubtask({название подзадачи});
-        setNameSubtask(prop.nameSubtask);
+        setNameSubtask(prop.name);
         //setIsChecked({статус подзадачи});
-        setIsChecked(prop.statusSubtask);
+        setIsChecked(prop.state);
         //getStatus({статус подзадачи});
 
     },[])

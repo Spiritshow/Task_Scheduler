@@ -6,7 +6,7 @@ const userControllers = require('../controller/userController');
 
 router.route("/api/user")
     .get((req,res) => {
-        userControllers.showUsers(req,res);
+        userControllers.showUser(req,res);
     })
 
     .post((req,res) => {
@@ -16,6 +16,10 @@ router.route("/api/user")
 router.route("/api/taskAtProject")
     .get((req,res) => {
         userControllers.showTaskAtProject(req,res);
+    })
+
+    .put((req,res) => {
+        userControllers.updateStateProject(req,res);
     })
 
 router.route("/api/project")
@@ -31,6 +35,7 @@ router.route("/api/project")
     .put((req,res) => {
         userControllers.updateProject(req,res);
     })
+
     // search idproject
     .delete((req,res) => {
         userControllers.deleteProject(req,res);

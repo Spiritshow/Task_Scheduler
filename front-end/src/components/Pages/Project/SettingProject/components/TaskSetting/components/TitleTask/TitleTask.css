@@ -71,7 +71,7 @@
 
 .DayTargetTaskdiv{
     text-align: center;
-    margin-left: 10px;
+    margin-left: 50px;
     margin-top: 15px;
     width: 125px;
     height: 52px;
@@ -95,7 +95,7 @@
 
 .yellowStatusTask{
     margin-top: 15px;
-    margin-left: 17px;
+    margin-left: 20px;
     width: 19px;
     height: 19px;
     background-color: yellow;
@@ -106,7 +106,7 @@
 
 .greenStatusTask{
     margin-top: 15px;
-    margin-left: 17px;
+    margin-left: 20px;
     width: 19px;
     height: 19px;
     background-color: green;

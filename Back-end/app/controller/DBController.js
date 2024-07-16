@@ -19,13 +19,14 @@ exports.queryDatabase = function(query) {
     });
 }
 
-exports.getUsers = function() {
+exports.getUser = function(id) {
     return knex.select({
         id_user: 'id',
         username: 'username',
         img: 'img'
     })
-    .from('users');
+    .from('users')
+    .where("id","=", id);
 }
 exports.insertUserKnex = function (tableU, tableA, dataU,dataA) {
     // return knex(table).insert(data).returning('id').then(id =>{
@@ -42,11 +43,12 @@ exports.insertUserKnex = function (tableU, tableA, dataU,dataA) {
 };
 
 exports.getTaskAtProject = function (idUser) {
-    return knex.select('task.id', 'task.name', 'task.daycreate', 'task.daytarget', 'task.deadline', 'task.state')
+    return knex.select('task.id', 'task.name', 'task.daycreate', 'task.daytarget', 'project.name as project_name','task.deadline', 'task.state', 'project.id as id_project')
     .from('task')
     .join('project', 'task.id_project', '=', 'project.id')
     .join('eligibility', 'project.id', '=', 'eligibility.idproject')
-    .where({'eligibility.iduser': idUser});
+    .where({'eligibility.iduser': idUser})
+    .orderBy('task.id','asc');;
 }
 
 exports.getProject = function (idUser) {
@@ -54,6 +56,7 @@ exports.getProject = function (idUser) {
     .from('project')
     .join('eligibility', 'project.id', '=', 'eligibility.idproject')
     .where({'eligibility.iduser': idUser})
+    .orderBy('project.id','asc');
 }
 
 exports.insertProjectAndEligibility = function (tableP,tableE, dataP, dataE) {
@@ -71,6 +74,12 @@ exports.putProject = function (table,id,name, daycreate, deadline, state) {
         .update({id,name,daycreate,deadline,state});
 }
 
+exports.putStateProject = function (table,id,state) {
+    return knex(table)
+    .where("id","=",id)
+    .update(state);
+}
+
 exports.deleteProject = function (idproject) {
     knex.transaction(async trx => {
         const queryE = await trx('eligibility').where({'idproject': idproject}).delete();
@@ -85,7 +94,8 @@ exports.deleteProject = function (idproject) {
 exports.getTask = function (table, id_project) {
     return knex.select('*')
             .from(table)
-            .where({'id_project': id_project});
+            .where({'id_project': id_project})
+            .orderBy('id','asc');;
 }
 
 exports.postTask = function (table, data) {
@@ -116,7 +126,14 @@ exports.deleteTask = function (tableT,tableS,id) {
 exports.getSubtask = function (table, id_task) {
     return knex.select('*')
             .from(table)
-            .where({'id_task': id_task});
+            .where({'id_task': id_task})
+            .orderBy('id','asc');
+}
+
+exports.putSubtask = function (table,id,data) {
+    return knex(table)
+        .where({'id': id})
+        .update(data).returning('id');
 }
 
 exports.deleteSubtask = function (table,id) {

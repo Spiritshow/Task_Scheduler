@@ -8,7 +8,7 @@ exports.up = function(knex) {
     table.string("name", 255).notNullable();
     table.date("daycreate").defaultTo(knex.fn.now());
     table.date("deadline").notNullable();
-    table.string("status", 255).defaultTo("yellow");
+    table.string("state", 255).defaultTo("yellow");
     table.integer("counttask").defaultTo(0);
   })
 };

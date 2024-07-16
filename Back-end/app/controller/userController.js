@@ -1,11 +1,13 @@
 const knex = require('knex');
 const bcrypt = require('bcrypt');
 
+
 const DBController = require('./DBController');
 const { escape } = require('mysql');
 
-exports.showUsers = (req,res) => {
-    DBController.getUsers().then(rows => {res.send(rows)})
+exports.showUser = (req,res) => {
+    const idUser = req.cookies.id_user;
+    DBController.getUser(idUser).then(rows => {res.send(rows)})
 };
 
 exports.createUser = function createUser(req,res) {
@@ -20,17 +22,22 @@ exports.createUser = function createUser(req,res) {
 exports.showTaskAtProject = (req, res) => {
     //const searchParams = new URLSearchParams(req.url);
     //const idUser = searchParams.get('/api/task?search'); /* мне не понраву /api/task?search когда должно быть просто search*/
-    const idUser = req.query.search;
+    //const idUser = req.query.search;
+
+    const idUser = req.cookies.id_user;
     DBController.getTaskAtProject(idUser).then(rows => {
         const today = new Date();
         const rowsFilTarget = rows.filter(item => item.daytarget <= today)
-        const rowsFiltr = rowsFilTarget.filter(item => item.state != 'green')
-        res.send(rowsFiltr)
+        
+        // console.log("test:");
+        // console.log(res);
+        // console.log();
+        res.send(rowsFilTarget)
     });
 };
 
 exports.showProject = (req, res) => {
-    const idUser = req.query.search;
+    const idUser = req.cookies.id_user;
     DBController.getProject(idUser).then(rows => {
         res.send(rows);
     })
@@ -49,6 +56,13 @@ exports.updateProject = (req,res) => {
 
     DBController.putProject('project',body.id, body.name, body.daycreate, body.deadline, body.state).then(result => {
         res.status(201).send(`${result}`);
+    })
+}
+
+exports.updateStateProject = (req,res) => {
+    const body = req.body;
+    DBController.putStateProject('project', body.id, {state: body.state}).then(result => {
+        res.status(200).send(`${result}`);
     })
 }
 
@@ -75,14 +89,14 @@ exports.insertTask = (req,res) => {
 
 exports.updateTask = (req,res) => {
     const body = req.body;
-    DBController.putTask('task',body.id,{name: body.name, daycreate: body.daycreate , daytarget: body.daytarget, deadline: body.deadline, state: body.state, id_project: body.id_project}).then(result => {
+    DBController.putSubtask('task',body.id,{name: body.name, daycreate: body.daycreate , daytarget: body.daytarget, deadline: body.deadline, state: body.state, id_project: body.id_project}).then(result => {
         res.status(201).send(`${result}`);
     })
 }
 
 exports.deleteTask = (req,res) => {
-    const body = req.body;
-    DBController.deleteTask('task',body.id).then(result => {
+    const id = req.query.search;
+    DBController.deleteTask('task','subtask',id).then(result => {
         res.status(200).send(`${result}`);
     })
 }
@@ -103,24 +117,27 @@ exports.insertSubtask = (req,res) => {
 
 exports.updateSubtask = (req,res) => {
     const body = req.body;
-    DBController.putTask('subtask', body.id, {name: body.name, state: body.state, id_task: body.id_task}).then(result => {
-        res.status(200).send(`${result}`);
+    DBController.putSubtask('subtask', body.id, {name: body.name, state: body.state, id_task: body.id_task}).then(result => {
+        res.status(200).send(result);
     })
 }
 
 exports.deleteSubtask = (req,res) => {
-    const body = req.body;
-    DBController.deleteSubtask('subtask',body.id).then(result => {
+    const id = req.query.search;
+
+    DBController.deleteSubtask('subtask',id).then(result => {
         res.status(200).send(`${result}`);
     })
 }
 
 exports.showAuthentication = (req,res) => {
     const body = req.body;
+
     DBController.getAuthentication('authentication',body.login).then(result => {
         if (result[0]) {
             if (bcrypt.compareSync(body.password, result[0].password)) {
-                res.status(200).send(result);   
+                res.cookie('id_user', result[0].iduser, {httpOnly: false, maxAge: 24 * 60 * 60 * 1000});
+                res.status(200).send(result);
             }else {
                 res.status(401).send();
             }    

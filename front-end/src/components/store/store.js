@@ -2,8 +2,22 @@ import {create} from 'zustand'
 
 export const useUser = create((set, get) => ({
     data: {name: "",image: ""},
-    addData: (name, image) => {
-        set({data: {name, image}});
+    addData: (prop) => {
+        set({data: prop});
+    }
+}));
+
+export const useCrutch = create((set, get) => ({
+    data: 1,
+    togleCrutch: () => {
+        set({data: get().data === 2 ? 1 : 2});
+    }
+}));
+
+export const useCrutch2 = create((set, get) => ({
+    data: 1,
+    togleCrutch: () => {
+        set({data: get().data === 2 ? 1 : 2});
     }
 }));
 
