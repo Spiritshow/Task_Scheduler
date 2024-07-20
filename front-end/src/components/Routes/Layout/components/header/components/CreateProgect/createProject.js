@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./createProject.css"
+import { useNavigate } from "react-router-dom";
 
 const ButtonCreateProject = () => {
 
+    const navigate = useNavigate();
     const [targ, setTarg] = useState(false)
     const [sInput, setSInput] = useState(false);
     const inputRef = useRef(null);
@@ -13,6 +15,7 @@ const ButtonCreateProject = () => {
 
     const handleClick = () => {
         setTarg(true);
+        navigate("/app/Project",{state: true});
     }
 
     const handleBlur = () => {

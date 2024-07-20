@@ -104,13 +104,13 @@ const Task = ({prop}) => {
                     <h4 className="NameTask">{prop.name}</h4>
                 </div>
                 <div className="DayCreateTaskdiv">
-                    <h4 className="DayCreateTask">{prop.daycreate}</h4> {/**/} 
+                    <h4 className="DayCreateTask">{ShowData(new Date(prop.daycreate))}</h4> {/**/} 
                 </div>
                 <div className="Projectdiv">
                     <h4 className="Project">{prop.project_name}</h4>
                 </div>
                 <div className="Deadlinediv">
-                    <h4 className="Deadline">{prop.deadline}</h4> {/*{prop.deadlineTask}*/}  {/*ShowData(prop.deadline)*/}
+                    <h4 className="Deadline">{ShowData(new Date(prop.deadline))}</h4> {/*{prop.deadlineTask}*/}  {/*ShowData(prop.deadline)*/}
                 </div>
                 <div className={status}></div>
             </div>

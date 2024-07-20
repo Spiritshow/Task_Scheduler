@@ -88,17 +88,17 @@ const TitleTask = ({prop}) => {
                     {update && <input onChange={handleChangeName} className="InputNameTask"></input>}
                 </div>
                 <div className="DayCreateTaskdiv">
-                     <h4 className="DayCreateTask">{prop.daycreate}</h4>  {/*ShowData(prop.daycreate) */}
-                    {/* {update && <input onChange={handleDayCreateTask} className="InputDayCreateTask"></input>}  */}
+                     <h4 className="DayCreateTask">{ShowData(new Date(prop.daycreate))}</h4>  {/*ShowData(prop.daycreate) */}
+                    {/* {update && <input type="date" onChange={handleDayCreateTask} className="InputDayCreateTask"></input>}  */}
                 </div>
                 <div className="DeadlineTaskdiv">
-                    {!update && <h4 className="DeadlineTask">{newdeadline}</h4>}  {/*ShowData(prop.deadline)*/}
-                    {update && <input onChange={handleChangeDeadline} className="InputDeadline"></input>} 
+                    {!update && <h4 className="DeadlineTask">{ShowData(new Date(newdeadline))}</h4>}  {/*ShowData(prop.deadline)*/}
+                    {update && <input type="date" onChange={handleChangeDeadline} className="InputDeadline"></input>} 
                 </div>
                 <div className={status}></div>
                 <div className="DayTargetTaskdiv">
-                    {!update && <h4 className="DayTargetTask">{newDayTarget}</h4>} {/*ShowData(prop.daytarget)*/}
-                    {update && <input onChange={handleDayTarget} className="InputDayTarget"></input>}
+                    {!update && <h4 className="DayTargetTask">{ShowData(new Date(newDayTarget))}</h4>} {/*ShowData(prop.daytarget)*/}
+                    {update && <input type="date" onChange={handleDayTarget} className="InputDayTarget"></input>}
                 </div>
                 {!update && <button className="ButtonSetting" onClick={handleSettings}><img src={imgSettings} className="ImageSetting"/></button>}
                 {update && <button className="ButtonSuccess" onClick={handleAdd}>ОК</button>}

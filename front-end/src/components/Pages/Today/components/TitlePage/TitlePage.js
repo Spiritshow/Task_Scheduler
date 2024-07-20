@@ -2,7 +2,7 @@ import React from "react";
 import imgsearch from "../img/Search.png"
 import "./TitlePage.css"
 
-const TitlePage = () => {
+const TitlePage = ({prop}) => {
 
     const handleChange = () => {
 
@@ -12,8 +12,9 @@ const TitlePage = () => {
 
     }
 
-    const handleSelect = () => {
-
+    const handleSelect = (event) =>  {
+        console.log(prop);
+        prop(event.target.value)
     }
 
     return(
@@ -25,10 +26,10 @@ const TitlePage = () => {
             </div>
             <div className="Selectordiv">
                 <select className="Selector" onChange={handleSelect}>
-                    <option value="">Всё</option>
-                    <option value="done">Выполненые</option>
-                    <option value="not done">Не выполненые</option>
-                    <option value="overdue">Просроченные</option>
+                    <option value="all">Всё</option>
+                    <option value="green">Выполненые</option>
+                    <option value="yellow">Не выполненые</option>
+                    {/* <option value="">Просроченные</option> */}
                 </select>
             </div>
         </div>

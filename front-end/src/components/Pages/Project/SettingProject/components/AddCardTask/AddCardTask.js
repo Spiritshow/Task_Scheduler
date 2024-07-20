@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./AddCardTask.css";
 import axios from "axios";
 
 const AddCardtask = ({prop}) => {
@@ -46,19 +47,24 @@ const AddCardtask = ({prop}) => {
     useEffect(() => {
         if(!!res){
         console.log(res.id);
-        prop.tasks.push({id: res.id, name: name, daycreate: newDayCreate, daytarget: newDayTarget, deadline: newDeadline, state: "green", id_project: prop.project.id})
+        prop.tasks.push({id: res.id, name: name,daytarget: newDayTarget, deadline: newDeadline, state: "green", id_project: prop.project.id})
         prop.setTarg(false);
         }
     }, [res]);
 
+    const ShowData = (data) => {
+        return(data.getDate() + "." + data.getMonth() + "." + data.getFullYear())
+    }
+
     return (
         <div className="AddCardTask">
             <input className="inputNewTask" onChange={handleInputTask}></input>
-            <input className="inputNewDayCreate" onChange={handleDayCreate}></input>
-            <input className="inputNewDayTarget" onChange={handleDayTarget}></input>
-            <input className="inputNewDeadline" onChange={handleDeadline}></input>
+            {/* <input className="inputNewDayCreate" onChange={handleDayCreate}></input> */}
+            <h4 className="NewDayCreate">{ShowData(new Date())}</h4>
+            <input type="date" className="inputNewDayTarget" onChange={handleDayTarget}></input>
+            <input type="date" className="inputNewDeadline" onChange={handleDeadline}></input>
             <button className="buttonInsertTask" onClick={handleInsertTask}>ОК</button>
-            <button className="buttonRepeal" onClick={handleRepeal}>ОТМЕНА</button>
+            <button className="buttonRepealTask" onClick={handleRepeal}>ОТМЕНА</button>
         </div>
     )
 }

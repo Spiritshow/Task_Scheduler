@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useUser } from "../../store/store";
+import "./authorization.css";
 axios.defaults.withCredentials = true
 const Authorization = () => {
     const setData = useUser(state => state.addData);
@@ -11,11 +12,11 @@ const Authorization = () => {
     const [password, setPassword] = useState();
 
     const handlePassword = (e) => {
-        setLogin(e.target.value);
+        setPassword(e.target.value);
     }
 
     const handleLogin = (e) => {
-        setPassword(e.target.value);
+        setLogin(e.target.value);
     }
 
     const recordUser = async () => {

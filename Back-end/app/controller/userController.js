@@ -15,38 +15,51 @@ exports.createUser = function createUser(req,res) {
     const salt = bcrypt.genSaltSync();
     const hash = bcrypt.hashSync(body.password,salt);
     DBController.insertUserKnex('users', 'authentication',{username: body.username, img: body.img},{login: body.login, password: hash}).then(result => {
-        res.send(result);
+        res.cookie('id_user', result.id, {httpOnly: false, maxAge: 24 * 60 * 60 * 1000});
+        res.status(200).send(result);
     })
 }
 
 exports.showTaskAtProject = (req, res) => {
     //const searchParams = new URLSearchParams(req.url);
     //const idUser = searchParams.get('/api/task?search'); /* мне не понраву /api/task?search когда должно быть просто search*/
-    //const idUser = req.query.search;
+    const filter = req.query.search;
 
     const idUser = req.cookies.id_user;
-    DBController.getTaskAtProject(idUser).then(rows => {
-        const today = new Date();
-        const rowsFilTarget = rows.filter(item => item.daytarget <= today)
-        
-        // console.log("test:");
-        // console.log(res);
-        // console.log();
-        res.send(rowsFilTarget)
-    });
+    if (filter === "all"){
+        DBController.getTaskAtProject(idUser).then(rows => {
+            const today = new Date();
+            const rowsFilTarget = rows.filter(item => item.daytarget <= today)
+            res.send(rowsFilTarget)
+        })
+    }
+    else{
+        DBController.getTaskAtProjectFilter(idUser,filter).then(rows => {
+            const today = new Date();
+            const rowsFilTarget = rows.filter(item => item.daytarget <= today)
+            res.send(rowsFilTarget)
+        })   
+    };
 };
 
 exports.showProject = (req, res) => {
+    const filter = req.query.search;
     const idUser = req.cookies.id_user;
-    DBController.getProject(idUser).then(rows => {
-        res.send(rows);
-    })
+    if(filter === 'all'){
+        DBController.getProject(idUser).then(rows => {
+            res.send(rows);
+        })}
+    else{
+        DBController.getProjectFilter(idUser,filter).then(rows => {
+            res.send(rows);
+        })
+    }
 };
 
 exports.createProject = (req,res) => {
     const body = req.body;
-   
-    DBController.insertProjectAndEligibility('project','eligibility',{name: body.name, deadline: body.deadline},{iduser: body.iduser}).then(result => {
+    const cookie = req.cookies.id_user;
+    DBController.insertProjectAndEligibility('project','eligibility',{name: body.name, deadline: body.deadline},{iduser: cookie}).then(result => {
         res.status(201).send(result);
     })
 }
@@ -67,8 +80,8 @@ exports.updateStateProject = (req,res) => {
 }
 
 exports.deleteProject = (req,res) => {
-    const body = req.body;
-    DBController.deleteProject(body.id).then(() =>{
+    const id = req.query.search;
+    DBController.deleteProject(id).then(result => {
         res.status(200);
     })
 }

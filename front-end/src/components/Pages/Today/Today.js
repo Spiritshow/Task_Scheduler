@@ -55,11 +55,13 @@ const Today = () => {
     // const props = [prop, _prop];
 
     const crutch2 = useCrutch2(state => state.data);
+    const setData = useUser(state => state.addData);
+    const [filter,setFilter] = useState('all');
 
     const [tasksToday, setTasksToday] = useState();
     const showTask = async () => {
         try {
-        const response = await axios.get('http://localhost:3001/api/taskAtProject');
+        const response = await axios.get(`http://localhost:3001/api/taskAtProject?search=${filter}`);
         //console.log(response.data);
         setTasksToday(response.data);
         }catch(error) {
@@ -67,9 +69,21 @@ const Today = () => {
         }
     }
 
+    const recordUser = async () => {
+        const result = await axios.get("http://localhost:3001/api/user").then(res => {
+            return setData({name: res.data[0].username, image: res.data[0].img})});
+
+    }
+
+    useEffect(() => {
+        if (document.cookie.indexOf("id_user") === 0) {
+            recordUser();  
+        }
+    },[])
+
     useEffect(() => {
         showTask();
-    }, [crutch2])
+    }, [crutch2,filter])
 
     const listTaskToday = (tasksToday) => {
         if(!!tasksToday)
@@ -86,7 +100,7 @@ const Today = () => {
     return(
         <div className="Todaydiv">
             <div className="Today">
-            <TitlePage/>
+            <TitlePage prop={setFilter}/>
             <TitleTable/>
             {tasksToday && listTaskToday(tasksToday)}
             {/* <Task prop={prop}/> */}

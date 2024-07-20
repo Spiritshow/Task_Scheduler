@@ -36,7 +36,7 @@ exports.insertUserKnex = function (tableU, tableA, dataU,dataA) {
     return knex.transaction(async trx => {
         const queryU = await trx(tableU).insert(dataU).returning('id');
         const queryA = await trx(tableA).insert({...dataA, iduser: queryU[0].id}).returning('id');
-        const result = {idproject: queryU[0], enbly: queryA[0]};
+        const result = queryU[0];
         return result;
     })
 
@@ -51,6 +51,16 @@ exports.getTaskAtProject = function (idUser) {
     .orderBy('task.id','asc');;
 }
 
+exports.getTaskAtProjectFilter = function (idUser,filter) {
+    return knex.select('task.id', 'task.name', 'task.daycreate', 'task.daytarget', 'project.name as project_name','task.deadline', 'task.state', 'project.id as id_project')
+    .from('task')
+    .join('project', 'task.id_project', '=', 'project.id')
+    .join('eligibility', 'project.id', '=', 'eligibility.idproject')
+    .where({'eligibility.iduser': idUser, 'task.state': filter})
+    .orderBy('task.id','asc');;
+}
+
+
 exports.getProject = function (idUser) {
     return knex.select('project.id','project.name','project.daycreate','project.deadline','project.state')
     .from('project')
@@ -59,11 +69,19 @@ exports.getProject = function (idUser) {
     .orderBy('project.id','asc');
 }
 
+exports.getProjectFilter = function (idUser, filter) {
+    return knex.select('project.id','project.name','project.daycreate','project.deadline','project.state')
+    .from('project')
+    .join('eligibility', 'project.id', '=', 'eligibility.idproject')
+    .where({'eligibility.iduser': idUser, 'project.state': filter})
+    .orderBy('project.id','asc');
+}
+
 exports.insertProjectAndEligibility = function (tableP,tableE, dataP, dataE) {
     return knex.transaction(async trx =>{
-        const queryP = await trx(tableP).insert(dataP).returning('id');
+        const queryP = await trx(tableP).insert(dataP).returning(['id','daycreate']);
         const queryE = await trx(tableE).insert({...dataE, idproject: queryP[0].id}).returning('id');
-        const result = {idproject: queryP[0], enbly: queryE[0]};
+        const result = queryP[0];
         return result;
     })
 }
@@ -83,10 +101,13 @@ exports.putStateProject = function (table,id,state) {
 exports.deleteProject = function (idproject) {
     knex.transaction(async trx => {
         const queryE = await trx('eligibility').where({'idproject': idproject}).delete();
-        const queryP = await trx('project').where({'id': idproject}).delete().returning('id');
-        const queryT = await trx('task').where({'id': queryP[0].id}).delete().returning('id');
-        const queryS = await trx('subtask').where({'id_task': queryT[0].id}).delete();
-        const result = {idproject: queryP[0], enbly: queryE[0],idtask:queryT[0],sub:queryS[0]};
+        const queryP = await trx('project').where({'id': idproject}).returning('id').delete();
+        const queryT = await trx('task').where({'id': queryP[0].id}).returning('id').delete();
+        if (queryT[0]) {
+            console.log(queryT);
+            const queryS = await trx('subtask').where({'id_task': queryT[0].id}).delete();    
+        }
+        const result = idproject;
         return result;
     })
 }

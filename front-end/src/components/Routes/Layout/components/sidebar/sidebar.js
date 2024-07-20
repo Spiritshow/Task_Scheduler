@@ -18,12 +18,13 @@ const Sidebar = () => {
 
     return(
         <div className="sidebar">
-            <h2 className="sidebarName">Проекты</h2>
+            <h2 className="sidebarName">Друзья</h2>
             <div className="ComponentSearchSB">
                 <button className="buttonSearchSB" onClick={handleSearch}><img className="imgSearchSB" src={imgSearch} alt=""></img></button>
                 <input className="InputSearchSB" onChange={handleChange} placeholder="Поиск..."></input>
             </div>
-            <CardProject prop={project}/>
+            {/* <CardProject prop={project}/> */}
+            <h4 className="TextNoFriend">*Увы, пока что у вас нет друзей.*</h4>
         </div>
     )
 }
