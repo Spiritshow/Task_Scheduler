@@ -10,7 +10,7 @@ exports.up = function(knex) {
     table.date("daycreate").defaultTo(knex.fn.now());
     table.date("deadline").notNullable();
     table.date("daytarget").notNullable();
-    table.string("status",255).defaultTo("yellow");
+    table.string("state",255).defaultTo("yellow");
   })
 };
 

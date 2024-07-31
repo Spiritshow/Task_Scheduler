@@ -5,8 +5,8 @@
 exports.up = function(knex) {
   return knex.schema.createTable("eligibility", (table) => {
     table.increments("id");
-    table.integer("id_project").notNullable();
-    table.integer("id_user").notNullable();
+    table.integer("idproject").notNullable();
+    table.integer("iduser").notNullable();
     table.string("authority");
   })
 };

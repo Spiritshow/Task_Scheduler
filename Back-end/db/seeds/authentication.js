@@ -9,6 +9,6 @@ exports.seed = async function(knex) {
   // Deletes ALL existing entries
   await knex('authentication').del()
   await knex('authentication').insert([
-    {id_user: 1, login: 'sshow', password: hash}
+    {iduser: 1, login: 'sshow', password: hash}
   ]);
 };

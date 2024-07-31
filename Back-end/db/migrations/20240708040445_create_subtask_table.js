@@ -7,7 +7,7 @@ exports.up = function(knex) {
     table.increments("id");
     table.integer("id_task").notNullable();
     table.string("name").notNullable();
-    table.boolean("status").defaultTo(false);
+    table.boolean("state").defaultTo(false);
   })
 };
 
