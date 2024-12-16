@@ -1,0 +1,44 @@
+.AddCardTask{
+    display: flex;
+    flex-direction: row;
+    background-color: #FEF6FF;
+    border-radius: 25px;
+    width: 958px;
+    height: 52px;
+    margin-top: 7px;
+}
+
+.inputNewTask{
+    margin-top: 15px;
+    height: 20px;
+    margin-left: 27px;
+}
+
+.NewDayCreate{
+    margin-top: 15px;
+    margin-left: 185px;
+}
+
+.inputNewDayTarget{
+    margin-top: 15px;
+    height: 20px;
+    margin-left: 45px;
+}
+
+.inputNewDeadline{
+    margin-top: 15px;
+    height: 20px;
+    margin-left: 80px;
+}
+
+.buttonInsertTask{
+    margin-left: 10px;
+    margin-top: 15px;
+    height: 27px;
+}
+
+.buttonRepealTask{
+    margin-left: 10px;
+    margin-top: 15px;
+    height: 27px;
+}

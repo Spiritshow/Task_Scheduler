@@ -1,0 +1,50 @@
+.TaskCard{
+    display: flex;
+    flex-direction: row;
+    margin-top: 7px;
+    border-radius: 15px;
+    background-color: #ddfafb;
+    height: 25px;
+    padding: 7px;
+}
+
+.nameTaskdiv{
+    width: 150px;
+    margin-top: 0px;
+    margin-left: 7px;
+}
+
+.nameTask{
+    margin: 0px;
+    margin-left: 12px;
+}
+
+.greenStatusTaskSB{
+    margin-top: 5px;
+    margin-left: 15px;
+    width: 15px;
+    height: 15px;
+    background-color: greenyellow;
+    border-radius: 25px;
+    border: solid 1px gray;
+}
+
+.redStatusTaskSB{
+    margin-top: 5px;
+    margin-left: 15px;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 25px;
+    border: solid 1px gray;
+}
+
+.yellowStatusTaskSB{
+    margin-top: 5px;
+    margin-left: 15px;
+    width: 15px;
+    height: 15px;
+    background-color: yellow;
+    border-radius: 25px;
+    border: solid 1px gray;
+}

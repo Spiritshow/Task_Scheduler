@@ -1,0 +1,42 @@
+.sidebar{
+    margin-top: 90px;
+    display: block;
+    position:fixed;
+    background-color: #F4FDFF;
+    height: 100%;
+    width: 20%;
+    padding-left: 23px;
+    z-index: 1;
+}
+
+.ComponentSearchSB{
+    display: flex;
+    flex-direction: row;
+}
+
+.buttonSearchSB{
+    margin: 0px;
+    padding: 0px;
+    width: 47px;
+    height: 48.2px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.imgSearchSB{
+    width: 44px;
+    height: 44px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.InputSearchSB{
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    height: 43px;
+    width: 200px;
+}
+
+.TextNoFriend{
+    color: #929292;
+}

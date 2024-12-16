@@ -1,0 +1,27 @@
+.cardSub{
+    display: flex;
+    flex-direction: row;
+    background-color: #FEF6FF;
+    border-radius: 25px;
+    width: 930px;
+    height: 40px;
+    margin-top: 7px;
+}
+
+.insertName{
+    margin-top: 7px;
+    height: 20px;
+    margin-left: 27px;
+}
+
+.buttonAddSub{
+    margin-left: 590px;
+    margin-top: 7px;
+    height: 27px;
+}
+
+.buttonRepeal{
+    margin-left: 10px;
+    margin-top: 7px;
+    height: 27px;
+}

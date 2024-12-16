@@ -1,0 +1,125 @@
+.ComponentTask{
+    border-radius: 25px;
+    width: 958px;
+    background-color: #ffccfd;
+}
+
+.TitleTask{
+    display: flex;
+    flex-direction: row;
+    width: 958px;
+    height: 52px;
+    border-radius: 25px;
+    background-color: #FEF6FF;
+    margin-top: 7px;
+}
+
+.ButtonSetting{
+    margin-top: 15px;
+    margin-left: 20px;
+    padding: 0px;
+    width: 30px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.ButtonDelete{
+    margin-top: 15px;
+    margin-left: 10px;
+    padding: 0px;
+    width: 30px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.ImageSetting{
+    margin: 0px ;
+    width: 27px;
+    height: 20px;
+}
+
+.ImageDelete{
+    margin: 0px ;
+    width: 27px;
+    height: 20px;
+}
+
+.NameTaskdiv{
+    margin-top: 15px;
+    margin-left: 20px;
+    width: 335px;
+    height: 52px;
+}
+
+.NameTask{
+    text-align: left;
+    margin: 0px;
+}
+
+.DayCreateTaskdiv{
+    text-align: center;
+    margin-top: 15px;
+    width: 125px;
+    height: 52px;
+}
+
+.DayCreateTask{
+    margin: 0px;
+}
+
+.DayTargetTaskdiv{
+    text-align: center;
+    margin-left: 50px;
+    margin-top: 15px;
+    width: 125px;
+    height: 52px;
+}
+
+.DayTargetTask{
+    margin: 0px;
+}
+
+.DeadlineTaskdiv{
+    text-align: center;
+    margin-left: 5px;
+    margin-top: 15px;
+    width: 150px;
+    height: 52px;
+}
+
+.DeadlineTask{
+    margin: 0px;
+}
+
+.yellowStatusTask{
+    margin-top: 15px;
+    margin-left: 20px;
+    width: 19px;
+    height: 19px;
+    background-color: yellow;
+    border-radius: 25px;
+    border: solid 2px gray;
+    
+}
+
+.greenStatusTask{
+    margin-top: 15px;
+    margin-left: 20px;
+    width: 19px;
+    height: 19px;
+    background-color: green;
+    border-radius: 25px;
+    border: solid 2px gray;
+}
+
+.redStatusTask{
+    margin-top: 15px;
+    margin-left: 20px;
+    width: 19px;
+    height: 19px;
+    background-color: red;
+    border-radius: 25px;
+    border: solid 2px gray;
+}

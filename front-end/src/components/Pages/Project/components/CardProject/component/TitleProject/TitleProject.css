@@ -1,0 +1,125 @@
+.ComponentProject{
+    border-radius: 25px;
+    width: 958px;
+    background-color: #ffccfd;
+}
+
+.TitleProject{
+    display: flex;
+    flex-direction: row;
+    width: 958px;
+    height: 52px;
+    border-radius: 25px;
+    background-color: #FEF6FF;
+    margin-top: 7px;
+}
+
+.ButtonSetting{
+    margin-top: 15px;
+    margin-left: 20px;
+    padding: 0px;
+    width: 30px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.ButtonDelete{
+    margin-top: 15px;
+    margin-left: 10px;
+    padding: 0px;
+    width: 30px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.ImageSetting{
+    margin: 0px ;
+    width: 27px;
+    height: 20px;
+}
+
+.ImageDelete{
+    margin: 0px ;
+    width: 27px;
+    height: 20px;
+}
+
+.NameProjectdiv{
+    margin-top: 15px;
+    margin-left: 20px;
+    width: 335px;
+    height: 52px;
+}
+
+.NameProject{
+    text-align: left;
+    margin: 0px;
+}
+
+.DayCreateProjectdiv{
+    text-align: center;
+    margin-top: 15px;
+    width: 125px;
+    height: 52px;
+}
+
+.DayCreateProject{
+    margin: 0px;
+}
+
+.CountTaskdiv{
+    text-align: center;
+    margin-left: 30px;
+    margin-top: 15px;
+    width: 150px;
+    height: 52px;
+}
+
+.CountTask{
+    margin: 0px;
+}
+
+.DeadlineProjectdiv{
+    text-align: center;
+    margin-left: 5px;
+    margin-top: 15px;
+    width: 150px;
+    height: 52px;
+}
+
+.DeadlineProject{
+    margin: 0px;
+}
+
+.yellowStatusProject{
+    margin-top: 15px;
+    margin-left: 17px;
+    width: 19px;
+    height: 19px;
+    background-color: yellow;
+    border-radius: 25px;
+    border: solid 2px gray;
+    
+}
+
+.greenStatusProject{
+    margin-top: 15px;
+    margin-left: 17px;
+    width: 19px;
+    height: 19px;
+    background-color: green;
+    border-radius: 25px;
+    border: solid 2px gray;
+}
+
+.redStatusProject{
+    margin-top: 15px;
+    margin-left: 20px;
+    width: 19px;
+    height: 19px;
+    background-color: red;
+    border-radius: 25px;
+    border: solid 2px gray;
+}

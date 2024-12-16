@@ -1,0 +1,72 @@
+.buttonToday{
+  font-size: 20px;
+  border-radius: 20px 0px 0px 20px;
+  width: 134px;
+  height: 54px;
+  color: #000000;
+  stroke: rgb(175, 175, 175);
+  stroke-width: 1px;
+}
+
+.buttonTodayClick{
+  font-size: 20px;
+  background-color: #e5e5e5;
+  border-radius: 20px 0px 0px 20px;
+  width: 134px;
+  height: 54px;
+  color: #000000;
+  stroke: rgb(175, 175, 175);
+  stroke-width: 1px;
+  box-shadow: inset 0px 4px .4em rgba(0, 0, 0, 0.25);
+}
+
+.buttonProject{
+  font-size: 20px;
+  border-radius: 0px 0px 0px 0px;
+  width: 134px;
+  height: 54px;
+  color: #000000;
+  stroke: rgb(175, 175, 175);
+  stroke-width: 1px;
+}
+
+.buttonProjectClick{
+  font-size: 20px;
+  background-color: #e5e5e5;
+  border-radius: 0px 0px 0px 0px;
+  width: 134px;
+  height: 54px;
+  color: #000000;
+  stroke: rgb(175, 175, 175);
+  stroke-width: 1px;
+  box-shadow: inset 0px 4px .4em rgba(0, 0, 0, 0.25);
+}
+
+.buttonCalendar{
+  font-size: 20px;
+  border-radius: 0px 20px 20px 0px;
+  width: 134px;
+  height: 54px;
+  color: #000000;
+  stroke: rgb(175, 175, 175);
+  stroke-width: 1px;
+}
+
+.buttonCalendarClick{
+  font-size: 20px;
+  background-color: #e5e5e5;
+  border-radius: 0px 20px 20px 0px;
+  width: 134px;
+  height: 54px;
+  color: #000000;
+  stroke: rgb(175, 175, 175);
+  stroke-width: 1px;
+  box-shadow: inset 0px 4px .4em rgba(0, 0, 0, 0.25);
+}
+
+.movePlace{
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 21%;
+}

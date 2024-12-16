@@ -1,0 +1,53 @@
+.ComponentCardSB{
+    width: 233px;
+    margin: 10px;
+    padding: 0px;
+    border-radius: 15px;
+    background-color: #acf5f8;
+}
+
+.TitleProgectCardSB{
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    padding-top: 7px;
+    height: 38px;
+    width: 233px;
+    border-radius: 15px;
+    background-color: #ddfafb;
+}
+
+.NameProjectCardSBdiv{
+    margin-left: 7px;
+    padding: 0px;
+    width: 160px;
+}
+
+.NameProjectCardSB{
+    margin: 0px;
+    margin-left: 12px;
+}
+
+.ComponentButtonCardSB{
+    margin-left: 10px;
+    padding: 0px;
+    width: 30px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.ButtonFoldCardSB{
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.ImgFoldCardSB{
+    margin: 0px;
+    width: 27px;
+    height: 20px;
+}
+
+.listTaskCardSB{
+    padding: 7px;
+}

@@ -1,0 +1,17 @@
+.SettingProjectdiv{
+    background-color: #F7E6FA;
+    height: 100%;
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
+.SettingProject{
+    margin-left: 27%;
+}
+
+.buttonAddTask{
+    background-color: #f877f3;
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-top: 7px;
+}

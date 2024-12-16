@@ -1,0 +1,21 @@
+.TaskSettingdiv{
+    border-radius: 25px;
+    width: 958px;
+    background-color: #ffccfd;
+}
+
+.TaskSetting{
+    margin-left: 0px;
+}
+
+.Listdiv{
+    margin: 7px;
+    padding: 7px;
+}
+
+.buttonAddSubtask{
+    background-color: #f877f3;
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-top: 7px;
+}

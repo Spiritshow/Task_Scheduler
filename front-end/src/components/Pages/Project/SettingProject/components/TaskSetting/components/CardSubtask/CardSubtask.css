@@ -1,0 +1,66 @@
+.ComponentSubtask{
+    display: flex;
+    flex-direction: row;
+    background-color: #FEF6FF;
+    border-radius: 25px;
+    width: 930px;
+    height: 40px;
+    margin-top: 7px;
+}
+
+.nameSubtaskdiv{
+    margin-top: 10px;
+    margin-left: 30px;
+    width: 714px;
+}
+
+.nameSubtask{
+    margin-top: 0px;
+    text-align: left;
+}
+
+.statusSubtaskdiv{
+    margin-top: 10px;
+    height: 40px;
+    margin-top: 7px;
+}
+
+.nameSubtaskdiv{
+    margin-top: 10px;
+    margin-left: 30px;
+    width: 700px;
+}
+
+.nameSubtask{
+    margin-top: 0px;
+    text-align: left;
+}
+
+.statusSubtaskdiv{
+    margin-top: 10px;
+    width: 132px;
+}
+
+.statusSubtask{
+    margin-top: 0px;
+}
+
+.checkbox{
+    margin-top: 0px;
+    margin-left: 10px;
+}
+
+.ButtonDeleteSubtask{
+    margin-top: 7px;
+    margin-left: 10px;
+    padding: 0px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.ImageDeleteSubtask{
+    margin: 0px ;
+    width: 17px;
+}
